@@ -5,6 +5,6 @@ def Binary (decimal):
         decimal = decimal // 2
     return str(decimal) + Binary
 
-Number = int(input("Insert the number you want to convert to binary: "))
+Number = int(input("Insert the Number you want to convert to binary: "))
 print(Binary(Number))
 
