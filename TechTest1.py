@@ -10,7 +10,7 @@ text = "Creo que a veces es la gente de la que nadie espera nada, la que hace co
 
 
 def ToLowerCAse (text):
-    lowrCase = text.lower()
+    lowrCase = text.upper()
     return lowrCase
 
 
