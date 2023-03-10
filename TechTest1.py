@@ -68,6 +68,4 @@ class CWD:
 
 
 StringText = CWD(texto)
-b = 'Hola'
-print(b)
 print(StringText.Exeqt())
