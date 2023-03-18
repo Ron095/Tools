@@ -10,6 +10,7 @@ except:
     print("Error: " + Pass_Doc + " has not been found")
 
 for Word in Pass_File:
+
     EncryptedWord = Word.encode('utf-8')
     HashedWord = hashlib.md5(EncryptedWord.strip())
     Digest = HashedWord.hexdigest()
