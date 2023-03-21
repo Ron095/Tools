@@ -181,4 +181,70 @@ def solution15(students):
     return students
 studentsss = ["John Smith", "Jacky Mon Simonoff","Lucy Smith", "Angela Zimonova"]
 
-print(solution15(studentsss))
+#print(solution15(studentsss))
+
+
+
+
+#with this you sum each element in the list ids but individuality
+#for example the first number = '529665' = 5+2+9+6+6+5 and return true
+#if the sum of all elements is divisible by kh=3
+ids = [529665, 909767, 644200]
+kh = 3
+def solution16(ids, kh):
+    digitSum = lambda Id: sum(float(i) for i in str(Id))
+    sm = 0
+    for questionId in ids:
+        sm += digitSum(questionId)
+    return sm % kh == 0
+
+#print(solution16(ids,kh))
+
+def flip(i):
+    flipper = int(''.join(str(i)[::-1]))
+    if i == flipper:
+        ans = False
+    else:
+        ans = True
+    return (flipper, ans)
+def is_asacending(lstt):
+    res = all(i<j for i,j in zip(lstt, lstt[1:]))
+    return res
+def solution17(lstt):
+    if is_asacending(lstt)==True:
+        return True
+    else:
+        NewList = []
+        ans = []
+        for i in lstt:
+            CopyList = lstt.copy()
+            y = lstt.index(i)
+            CopyList[y] = flip(i)[0]
+            NewList.append(CopyList)
+            if is_asacending(CopyList):
+                ans.append(True)
+            else:
+                ans.append(False)
+        if True in ans:
+            return True
+        else:
+            return False
+
+
+print(solution17([1,5,10,20]))
+print(solution17([1,3,900,10]))
+print(solution17([13,31,30]))
+print(solution17([222,214,333]))
+
+
+
+
+
+
+
+
+
+
+
+
+
