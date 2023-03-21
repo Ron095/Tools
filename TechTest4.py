@@ -200,6 +200,7 @@ def solution16(ids, kh):
 
 #print(solution16(ids,kh))
 
+#Problem about change number that contained zero nad it must be stay in ascending way. if you want to se the problem, check in your folder ARCHIVOS IMPORTANTEA and see the picture PRACTICE PYTHON
 def flip(i):
     flipper = int(''.join(str(i)[::-1]))
     if i == flipper:
