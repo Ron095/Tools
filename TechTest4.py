@@ -232,20 +232,88 @@ def solution17(lstt):
             return False
 
 
-print(solution17([1,5,10,20]))
-print(solution17([1,3,900,10]))
-print(solution17([13,31,30]))
-print(solution17([222,214,333]))
+#print(solution17([1,5,10,20]))
+#print(solution17([1,3,900,10]))
+#print(solution17([13,31,30]))
+#print(solution17([222,214,333]))
 
 
 
+#Sawtooth secuence
+
+#with this function check if either numbers have the seme sign
+def samesign(a, b):
+    if a / abs(a) == b / abs(b):
+        return True
+    else:
+        return False
+
+def countSawSubarrays(arr):
+    n = len(arr) #give the lenght of array
+    if n < 2:
+        return 0  #if the array lenght if smaller than 2 then return 0 directly like response becasue you only have sawtooth secuence with two o more points on the array
+
+    #but when lenght of n is greater than two, then:
+    s = 0 #is a count to start in Zero
+    e = 1 #is a count to start in One
+    count = 0 #is a count to acumulate a value
+
+    while (e < n): #this bucle it'll be repeated until "e" is less than "n"
+        sign = arr[e] - arr[s] #wiht this line we subtract 'e' element on array with 's' element, in this case you can look like the present number with the previous
+        while (e < n and arr[e] != arr[e - 1] and samesign(arr[e] - arr[e - 1], sign)):
+            sign = -1 * sign
+            e += 1
+        size = e - s
+        if (size == 1):
+            e += 1
+        count += (size * (size - 1)) // 2
+        s = e - 1
+        e = s + 1
+    return count
+
+
+arr2 = [1,2,1,2,1]
 
 
 
+#print(countSawSubarrays(arr2))
 
+#kadane's algorithm to resolve the maximum sum subarray problem
+def max_subarray(numbers):
+    """Find the largest sum of any contiguous subarray."""
+    best_sum = 0
+    current_sum = 0
+    for x in numbers:
+        current_sum = max(0, current_sum + x)
+        best_sum = max(best_sum, current_sum)
+    return best_sum
 
+def MaxSum_subarray(numbers):
+    max_sum = numbers[0]
+    current_sum = max_sum
 
+    max_start = 0
+    max_end = 0
+    current_start = 0
 
+    for i in range(len(numbers)):
+        current_sum = current_sum + numbers[i]
+        current_end = i
+        if current_sum < 0:
+            current_sum = 0
 
+            #start a new sequence from next element
+            current_start = current_end + 1
 
+        if max_sum < current_sum:
+            max_sum = current_sum
+            max_start = current_start
+            max_end = current_end
+
+    NewArray = numbers[max_start:max_end+1]
+
+    return max_sum, NewArray
+
+print(MaxSum_subarray([-2,-3,4,-1,-2,5,-3]))
+print(MaxSum_subarray([-3,1,-8,12,0,-3,5,-9,4]))
 
