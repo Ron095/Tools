@@ -363,8 +363,8 @@ while polling_active:
 print("\n--- Poll Results ---")
 for name, response in responses.items():
     print(name + " would like to climb " + response + ".")
-
 """
+
 
 #---------------------------------------------------
 #Chapter 8 FUNCTIONS (page 134)
