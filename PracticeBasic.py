@@ -369,3 +369,135 @@ for name, response in responses.items():
 #---------------------------------------------------
 #Chapter 8 FUNCTIONS (page 134)
 #Defining a Function
+def greet_user(username: str):
+    """Display a simple greeting"""
+    print("Hello, " + username.title() + "!")
+
+#greet_user('Jessie')
+
+def describe_pet(animal_type: str, pet_name:str):
+    """Display information about a pet."""
+    print("\nI have a " + animal_type + ".")
+    print("My " + animal_type + "'s name is " + pet_name.title() + ".")
+
+#describe_pet(pet_name='harry', animal_type='hamster')
+
+#Default Values
+def describe_pet1(pet_name: str, animal_type: str ='dog'):
+    """Display information about a pet"""
+    print("\nI have a " + animal_type + ".")
+    print("My " + animal_type + "'s name is " + pet_name.title() + ".")
+
+#describe_pet1(pet_name='willie')
+
+#Return Values
+#Making an Argument Optional
+def get_formatted_name(first_name: str, middle_name: str, last_name: str):
+    """Return a full name, neatly formatted"""
+    full_name = first_name + ' ' + middle_name + ' ' + last_name
+    return full_name.title()
+musician = get_formatted_name('john', 'lee', 'hooker')
+
+"""To make get_formatted_name() work without a middle name, we set the default value of middle_name to an empty
+string and move it to the end of the list of parameters: """
+def get_formatted_name1(first_name: str, last_name: str, middle_name=''):
+    """Return a full name, neatly formatted."""
+    if middle_name:
+        full_name = first_name + ' ' + middle_name + ' ' + last_name
+    else:
+        full_name = first_name + ' ' + last_name
+    return full_name.title()
+
+musician1 = get_formatted_name1('jimi', 'hendrix')
+musician2 = get_formatted_name1('john', 'hooker', 'lee')
+
+#Returning a Dictionary
+def build_person(first_name: str, last_name: str):
+    """Return a dictionary of information about a person."""
+    person = {'first': first_name, 'last': last_name}
+    return person
+musician3 = build_person('jimi', 'hendrix')
+
+def buil_person1(first_name: str, last_name: str, age: int =''):
+    """Return a dictionary of information about a person."""
+    person = {
+        'first': first_name,
+        'last': last_name,
+    }
+
+    if age:
+        person['age'] = age
+    return person
+musician4 = buil_person1('jimi', 'hendrix', age=27)
+
+#Using a Function with a while Loop
+def get_formatted_name2(first_name: str, last_name: str):
+    """Return a full name, neatly formatted."""
+    full_name = first_name + ' ' + last_name
+    return full_name.title()
+
+#This is an infinite loop!
+"""
+while True:
+    print("\nPlease tell me your name")
+    print("(enter 'q' at any time to quit)")
+
+    f_name = input("First name: ")
+    if f_name == 'q':
+        break
+
+    l_name = input("Last name: ")
+    if l_name == 'q':
+        break
+
+    formatted_name = get_formatted_name2(f_name, l_name)
+    print("\nHello, " + formatted_name + "!")
+"""
+
+#Try It Yourself
+"""
+# 8.6 City Names: Write a function called city_country() that takes in the name
+# of a city and its country. The function should return a string formatted like this
+# "Santiago, Chile"
+# Call your function with a least three city-country pairs, and print the value that's returned
+
+def city_country(city: str, country: str):
+    name_formatted = city + ", " + country
+    return name_formatted
+
+#print(city_country(city="Santiago", country="Chile"))
+
+#8.7 Album - 8.8 User Albums
+def make_album(artist_name: str, album_title: str, number_tracks = ''):
+    music_album = {
+        'artist': artist_name,
+        'title': album_title,
+    }
+    if number_tracks:
+        music_album['Tracks'] = number_tracks
+    return music_album
+
+while True:
+    print("\nPlease tell me information about your favourites Albums")
+    print("(enter 'q' at any time to quit)")
+
+    ar_name = input("Tell me the artist name: ")
+    if ar_name == 'q':
+        break
+
+    al_title = input("Tell me the album tittle: ")
+    if al_title == 'q':
+        break
+
+    nu_track = input("Tell me the Album's track numbers: ")
+    if nu_track == 'q':
+        break
+
+    making_album = make_album(ar_name, al_title, nu_track)
+    print(making_album)
+"""
+
+
+
+
+
