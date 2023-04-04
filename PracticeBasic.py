@@ -497,7 +497,94 @@ while True:
     print(making_album)
 """
 
+#Passing a list
+
+def greet_users(names):
+    """Print a simple greeting to each user in the list."""
+    for name in names:
+        msg = "Hello, " + str(name).title() + "!"
+        print(msg)
+
+usernames = ['hannah', 'ty', 'margot']
 
 
+#Modifying a List in a Function
+def print_models(unprinted_designs, completed_models):
+    """Simulate printing each design, untill none are left.
+    Move each design to completed_models after printing.
+    """
+    while unprinted_designs:
+        current_design = unprinted_designs.pop()
+
+        #Simulate creating a 3D print from the design.
+        print("Printing model: " + current_design)
+        completed_models.append(current_design)
+
+def show_completed_models(complete_models):
+    """Show all the models that were printed."""
+    print("\nThe Following models have been printed:")
+    for complete_model in complete_models:
+        print(complete_model)
 
 
+unprinted_designs = ['iphone case', 'robot pendant', 'dodecahedron']
+completed_models = []
+
+
+#The slice notation [:] makes a copy of the list to send to the function.
+#If we didn’t want to empty the list of unprinted designs.
+#we could call print_models() like this:
+
+#print_models(unprinted_designs[:], completed_models)
+#show_completed_models(completed_models)
+
+#Passing an Arbitrary Number of Arguments
+
+"""The asterisk in the parameter name '*toppings' tells Python to make an
+empty tuple called toppings and pack whatever values it receives into this tuple.
+"""
+def make_pizza(*toppings):
+    """Summarize the pizza we are about to make."""
+    print("\nMaking a pizza with the following toppings:")
+    for topping in toppings:
+        print("- " + topping)
+
+#make_pizza('pepperoni')
+#make_pizza('mushrooms', 'green peppers', 'extra cheese')
+
+#Mixing positional and Arbitrary Arguments
+"""
+Python matches positional and keyword arguments first and 
+then collects any remaining arguments in the final parameter.
+"""
+def make_pizza1(size, *toppings):
+    """Sumarize the pizza we are about to make."""
+    print("\nMaking a " + str(size) + "-inch pizza with te following toppings:")
+    for topping in toppings:
+        print("- " + topping)
+
+#make_pizza1(16, 'pepperoni')
+#make_pizza1(12, 'mushrooms', 'green peppers', 'extra cheese')
+
+#Using Arbitrary Keyword Arguments
+
+"""
+The definition of build_profile() expects a first and last name, and
+then it allows the user to pass in as many name-value pairs as they want. The
+double asterisks before the parameter **user_info cause Python to create
+an empty dictionary called user_info and pack whatever name-value pairs it
+receives into this dictionary.
+"""
+def buid_profile(first, last, **user_info):
+    """Build a dictionary containing everything we knoe about a user."""
+    profile = {}
+    profile['first_name'] = first
+    profile['last_name'] = last
+    for key, value in user_info.items():
+        profile[key] = value
+    return profile
+
+user_profile = buid_profile('albert', 'einstein', location='princeton', field='physics')
+print(user_profile)
+
+#Storing Your Functions in Modules
