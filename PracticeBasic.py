@@ -589,8 +589,66 @@ def buid_profile(first, last, **user_info):
 
 
 #Storing Your Functions in Modules
-import pizza
-pizza.make_pizza2(16, 'pepperoni')
-pizza.make_pizza2(12, 'mushrooms', 'green peppers', 'extra cheese')
+#import pizza
+#pizza.make_pizza2(16, 'pepperoni')
+#pizza.make_pizza2(12, 'mushrooms', 'green peppers', 'extra cheese')
 
 #Importing Specific Functions
+#You can also import a specific function from a module. Here's the general syntax for this approach:
+"""  from 'module_name' import 'function_name'  """
+
+#You can import as many functions as you want from a module by separating each function's name with a comma:
+"""  from 'module_name' import 'function_0', 'function_1', 'function_2'  """
+
+
+"""
+With this syntax, you don’t need to use the dot notation when you call a
+function. Because we’ve explicitly imported the function make_pizza() in the
+import statement, we can call it by name when we use the function.
+"""
+#from pizza import make_pizza2
+#make_pizza2(16, 'pepperoni')
+#make_pizza2(12, 'mushrooms', 'green peppers', 'extra cheese')
+
+#Using as to Give a Function an Alias
+"""
+Here we give the function make_pizza() an alias, mp(), by importing
+make_pizza as mp. The as keyword renames a function using the alias you
+provide:
+
+The general syntax for providing an alias is:
+from 'module_name' import 'function_name' as 'fn'
+
+"""
+#from pizza import make_pizza2 as mp
+#mp(16, 'pepperoni')
+#mp(12, 'mushrooms', 'green peppers', 'extra cheese')
+
+#Using as to Give a Module an Alias
+"""
+You can also provide an alias for a module name. Giving a module a short
+alias, like p for pizza, allows you to call the module’s functions more quickly.
+Calling p.make_pizza() is more concise than calling pizza.make_pizza():
+
+The general syntax for this approach is:
+import 'module_name' as 'mn'
+
+"""
+#import pizza as p
+#p.make_pizza2(16, 'pepperoni')
+#p.make_pizza2(12, 'mushrooms', 'green peppers', 'extra cheese')
+
+#importing All functions in a Module
+"""
+You can tell Python to import every function in a module by using the asterisk
+(*) operator:
+
+from 'module_name' import *
+
+"""
+
+#from pizza import *
+#make_pizza2(16, 'pepperoni')
+#make_pizza2(12, 'mushrooms', 'green peppers', 'extra cheese')
+
+#--------------------------------------------------CHAPTER 9 - CLASSES----------------------------- (PAGE 160)*
