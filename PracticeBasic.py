@@ -651,4 +651,174 @@ from 'module_name' import *
 #make_pizza2(16, 'pepperoni')
 #make_pizza2(12, 'mushrooms', 'green peppers', 'extra cheese')
 
-#--------------------------------------------------CHAPTER 9 - CLASSES----------------------------- (PAGE 160)*
+#--------------------------------------------------CHAPTER 9 - CLASSES-----------------------------*
+#Creating the Dog Class
+
+class Dog():
+    """A simple attempt to model a dog."""
+
+    def __init__(self, name: str, age):
+        """Initialize name and age attributes"""
+        self.name = name
+        self.age = age
+
+    def sit(self):
+        """Simulate a dog sitting in response to a command."""
+        print(self.name.title() +  " is now sitting.")
+
+    def roll_over(self):
+        """Simulate rolling over in response to a command."""
+        print(self.name.title() + " rolled over!")
+"""
+#instace 1
+my_dog = Dog('Willie', 6)
+
+print("My dog's name is " + my_dog.name.title() + ".")
+print("My dog is " + str(my_dog.age) + " years old.")
+my_dog.sit()
+my_dog.roll_over()
+
+#instance 2
+your_dog = Dog('lucy', 3)
+
+print("My dog's name is " + your_dog.name.title() + ".")
+print("My dog is " + str(your_dog.age) + " years old.")
+your_dog.sit()
+your_dog.roll_over()
+
+"""
+
+#Working with classes and instances
+class Car():
+    """A simple attempt to represent a car."""
+    def __init__(self, make, model, year):
+        """Initialize attributes to describe a car."""
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        """Return a neatly formatted descriptive name."""
+        log_name = str(self.year) + ' ' + self.make + ' ' + self.model
+        return log_name.title()
+
+    def read_odometer(self):
+        """Print a statement showing the car's mileage."""
+        print("This car has " + str(self.odometer_reading) + " miles on it.")
+
+    def update_odometer(self, mileage):
+        """
+        Set the odometer reading to the given value.
+        Reject the change if it attempts to roll the odometer back.
+        """
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading"""
+        self.odometer_reading += miles
+
+    def fill_gas_tank(self):
+        """Electric cars don't have gas tanks"""
+        print("This car does need a gas tanks!")
+
+
+#my_new_car = Car('audi', 'a4', 2016)
+#print(my_new_car.get_descriptive_name())
+
+
+#Modifying an attribute's Value Directly
+#The simplest way to modify the value of an attribute is to access the attribute
+#directly through an instance. Here we set the odometer reading to 23
+"""
+my_new_car.odometer_reading = 23
+my_new_car.read_odometer()
+"""
+
+#Modifying an Attribute's Value Through a Method
+#the method there is in a class. it call 'update_odometer'
+"""
+my_new_car.update_odometer(23)
+my_new_car.read_odometer()
+"""
+
+#Incrementing an Attribute's Value Through a Method
+#the method there is in a class. it call 'increment_odometer'
+"""
+my_used_car = Car('subaru', 'outback', 2013)
+print(my_used_car.get_descriptive_name())
+
+my_used_car.update_odometer(23500)
+my_used_car.read_odometer()
+
+my_used_car.increment_odometer(100)
+my_used_car.read_odometer()
+"""
+
+#Inheritance
+#The __init__() Method for a Child Class
+#Let’s start by making a simple version of the ElectricCar class, which does everything the Car class does:
+#When you create a child class, the parent class must be part of the current file and must appear before the child class in
+#the file.
+
+"""The name of the parent class must be included in parentheses in the definition of the child class."""
+class ElectricCar(Car):
+    """Represent aspects of a car, specific to electric vehicles."""
+    """
+    The __init__() method takes in the information required to make a Car
+    instance.
+    """
+    def __init__(self, make, model, year):
+        """Initialize attributes of the parent class."""
+        """
+        The super() function is a special function that helps Python make
+        connections between the parent and child class. This line tells Python to
+        call the __init__() method from ElectricCar’s parent class, which gives an
+        ElectricCar instance all the attributes of its parent class. The name super
+        comes from a convention of calling the parent class a superclass and the
+        child class a subclass.
+        """
+        super().__init__(make, model, year)
+        self.battery_size = 70
+
+    def describe_battery(self):
+        """Print a statement describing the battery size."""
+        print("This car has a " + str(self.battery_size) + "-kwh battery.")
+
+
+    """
+    You can override any method from the parent class that doesn't fit what you're
+    trying to model with de child class. To do this, you define a method in the child class
+    with the same name as the method you want to override in the parent class.
+    """
+    def fill_gas_tank(self):
+        """Electric cars don't have gas tanks"""
+        print("This car doesn't need a gas tanks!")
+
+my_tesla = ElectricCar('tesla', 'model s', 2016)
+print(my_tesla.get_descriptive_name())
+my_tesla.describe_battery()
+my_tesla.fill_gas_tank()
+
+#--------------------Continue at page 175-----------------------*
+#Instances as Attributes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
