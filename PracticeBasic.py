@@ -824,11 +824,34 @@ class ElectricCar(Car):
 
 
 
-
+"""
 my_tesla = ElectricCar('tesla', 'model s', 2016)
 print(my_tesla.get_descriptive_name())
 my_tesla.battery.describe_battery()
 my_tesla.battery.get_range()
+"""
+
+#Python Standard Library
+#Collection - OrderedDict()
+"""Instances of the OrderedDict class behave almost exactly like dictionaries
+except they keep track of the order in which key-value pairs are added.
+This is a great class to be aware of because it combines the main benefit
+of lists (retaining your original order) with the main feature of dictionaries
+(connecting pieces of information)."""
+from collections import OrderedDict
+
+#The python standard library
+
+favorite_languages7 = OrderedDict()
+favorite_languages7['jen'] = 'python'
+favorite_languages7['sarah'] = 'c'
+favorite_languages7['edward'] = 'ruby'
+favorite_languages7['phil'] = 'python'
+
+#for name, language in favorite_languages.items():
+    #print(name.title() + "'s favorite language is " + language.title() + ".")
+
+
 
 
 
