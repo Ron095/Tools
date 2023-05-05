@@ -44,17 +44,167 @@ pi_string = ''
 for line in lines:
     pi_string += line.strip()
 
-print(pi_string)
-print(len(pi_string))
+#print(pi_string)
+#print(len(pi_string))
 
 #----------------Continue page 195 Large Files: One Million Digits------------------#
+#print(pi_string[:52] + "...")
+
+#Is your Birthday Contained in Pi?
+"""
+birthday = input('Enter your birthday, in the from mmddyy: ')
+if birthday in pi_string:
+    print("Your birthday appears in the first million digits of pi!")
+else:
+    print("Your birthday does not appear in the first million digits of pi.")
+"""
+
+#Writing to a File
+#Writing to an Empty File
+
+"""
+filename = 'programming.txt'
+with open(filename, 'w') as file_object:
+    file_object.write("I love programming.")
+"""
+
+#Writing Multiple Lines
+"""
+filename = 'programming.txt'
+with open(filename, 'w') as file_object:
+    file_object.write("I love programming.\n")
+    file_object.write("I love creating new games.\n")
+"""
+#Appending to a File
+"""
+filename = 'programming.txt'
+with open(filename, 'a') as file_object:
+    file_object.write("I also love finding meaning in large datasets.\n")
+    file_object.write("I love creating apps that can run in a browser.\n")
+"""
+#Exceptions
+#Handing the ZeroDivisionError Exception
+"""
+try:
+    print(5/0)
+except ZeroDivisionError:
+    print("You can't divide by zero!")
+"""
+#Using Exceptions to Prevent Crashes
+"""
+print("Give me two numbers, and I'll divide them.")
+print("Enter 'q' to quit.")
+while True:
+    first_number = input("\nFirst number: ")
+    if first_number == 'q':
+        break
+    second_number = input("Second number: ")
+    try:
+        answer = int(first_number) / int(second_number)
+    except ZeroDivisionError:
+        print("You can't divide by 0!")
+    else:
+        print(answer)
+"""
+
+#Handing the FileNotFoundError Exception
+
+"""
+filename = 'alice.txt'
+try:
+    with open(filename) as f_obj:
+        contents = f_obj.read()
+except FileNotFoundError:
+    msg = "Sorry, the file " + filename + " does not exist."
+    print(msg)
+"""
+
+#Analyzing Text
+
+"""
+filename = 'alice.txt'
+try:
+    with open(filename) as f_obj:
+        contents = f_obj.read()
+except FileNotFoundError:
+    msg = "Sorry, the file " + filename + " does not exist."
+    print(msg)
+else:
+    #Count the approximate number of words in the file.
+    words = contents.split()
+    num_words = len(words)
+    print("The file " + filename + " has about " + str(num_words) + " words.")
+"""
+
+#Working with Multiple Files
+
+def count_words(filename):
+    """Count the approximate number of words in a file."""
+    try:
+        with open(filename) as f_obj:
+            contents = f_obj.read()
+    except FileNotFoundError:
+        msg = "Sorry, the file " + filename + " does not exist."
+        print(msg)
+    else:
+        #Count approximate number of words in the file.
+        words = contents.split()
+        num_words = len(words)
+        print("The file " + filename + " has about " + str(num_words) + " words.")
 
 
+#filenames = ['alice.txt', 'siddhartha.txt', 'little_women.txt']
+#for filename in filenames:
+    #count_words(filename)
 
+#Failing Silently
+def count_words1(filename):
+    """Count the approximate number of words in a file."""
+    try:
+        with open(filename) as f_obj:
+            contents = f_obj.read()
+    except FileNotFoundError:
+        pass
+    else:
+        #Count approximate number of words in the file.
+        words = contents.split()
+        num_words = len(words)
+        print("The file " + filename + " has about " + str(num_words) + " words.")
 
+#filenames = ['alice.txt', 'siddhartha.txt', 'little_women.txt']
+#for filename in filenames:
+    #count_words1(filename)
 
+#Using json.dump() and json.load() ( This is a simple way to share data between two programs.
+import json
 
+#json.dump()
+#numbers = [2, 3, 5, 7, 11, 13]
+#filename = 'numbers.json'
+#with open(filename, 'w') as f_obj:
+    #json.dump(numbers, f_obj)
 
+#json.load()
+#filename = 'numbers.json'
+#with open(filename) as f_obj:
+    #numbers = json.load(f_obj)
+#print(numbers)
 
+#Saving and Reading User-Generated Data
+"""
+username = input("What is your name? ")
+filename = 'username.json'
 
+with open(filename, 'w') as f_obj:
+    json.dump(username, f_obj)
+    print("We'll remember you when you come back, " + username + "!")
+"""
 
+#Now let's write a new program that greets a user whose name has already been stored:
+"""
+filename = 'username.json'
+
+with open(filename) as f_obj:
+    username = json.load(f_obj)
+    print("Welcome back, " + username + "!")
+"""
